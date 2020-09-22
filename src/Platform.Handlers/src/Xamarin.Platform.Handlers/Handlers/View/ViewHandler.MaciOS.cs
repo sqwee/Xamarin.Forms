@@ -1,6 +1,4 @@
-﻿using System;
-
-#if __IOS__
+﻿#if __IOS__
 using NativeColor = UIKit.UIColor;
 using NativeControl = UIKit.UIControl;
 using NativeView = UIKit.UIView;
@@ -24,11 +22,11 @@ namespace Xamarin.Platform.Handlers
 
 		public static void MapBackgroundColor(IViewHandler handler, IView view)
 		{
-			var nativeView = (NativeView)handler.NativeView;
+			var nativeView = handler.NativeView as NativeView;
 			var color = view.BackgroundColor;
 
 			if (color != null && !color.IsDefault)
-				nativeView.SetBackgroundColor(color.ToNative());
+				nativeView?.SetBackgroundColor(color.ToNative());
 		}
 	}
 }
